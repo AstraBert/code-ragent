@@ -1,0 +1,5 @@
+qdrant/
+.mypy_cache/
+__pycache__/
+code-ragent.code-workspace
+.env

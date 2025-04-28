@@ -1,0 +1,10 @@
+FROM python:3.11.9-slim-bookworm
+
+WORKDIR /frontend/
+COPY ./frontend.py /frontend/
+COPY ./requirements.frontend.txt /frontend/
+
+RUN pip cache purge
+RUN pip install --no-cache-dir -r requirements.frontend.txt
+
+CMD ["streamlit", "run", "frontend.py"]

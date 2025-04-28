@@ -1,0 +1,30 @@
+name: code-ragent
+services:
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports:
+      - 6333:6333
+      - 6334:6334
+    volumes:
+      - ./qdrant/storage:/qdrant/storage
+  frontend:
+    build: 
+      context: .
+      dockerfile: Dockerfile.frontend 
+    ports:
+      - 8501:8501
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - 8000:8000
+    secrets:
+      - linkup_key
+      - openai_key
+
+secrets:
+  openai_key:
+    environment: openai_api_key
+  linkup_key:
+    environment: linkup_api_key
