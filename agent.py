@@ -32,6 +32,17 @@ evaluator_f = FaithfulnessEvaluator()
 evaluator_r = RelevancyEvaluator()
 
 async def evaluate_response(original_query: str = Field(description="User's original query"), retrieved_context: str = Field(description="Retrieved context, either from the web or from the vector database"), response: str = Field(description="Response to be evaluated")):
+    """
+    Useful for evaluating a generated response based on correctness, faithfulness, and relevancy.
+
+    Args:
+        original_query (str): User's original query.
+        retrieved_context (str): Retrieved context, either from the web or from the vector database.
+        response (str): Response to be evaluated.
+
+    Returns:
+        str: A JSON-formatted string containing the evaluation scores for correctness, faithfulness, and relevancy.
+    """
     f = await evaluator_f.aevaluate(query = original_query, contexts = [retrieved_context], response = response)
     c = await evaluator_c.aevaluate(query = original_query, contexts = [retrieved_context], response = response)
     r = await evaluator_r.aevaluate(query = original_query, contexts = [retrieved_context], response = response)
