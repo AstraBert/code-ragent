@@ -73,11 +73,11 @@ agent = FunctionAgent(
         "It is best for finding code examples, explanations, or solutions from the codebase.\n"
         "2. web_search_tool: Use this to search the web for solutions to coding problems. "
         "It is best for finding up-to-date information, external code snippets, or explanations not found in the codebase.\n"
-        "3. evaluate_response: Use this to evaluate the correctness, faithfulness, and relevancy of a response given the original query and retrieved context. You should always use this tool, after you produced a response.\n"
+        "3. evaluate_response: Use this to evaluate the correctness, faithfulness, and relevancy of a response given the original query and retrieved context. You should always use this tool.\n"
         "Choose the most appropriate tool based on the user's query. "
         "Always provide clear, concise, and accurate answers. "
         "If code is required, include a code snippet and an explanation."
-        "You should always use the evaluate_response tool, once you produced a final response."
+        "You should always use the evaluate_response tool."
     ),
     tools = [vector_search_tool, web_search_tool, evaluate_response],
 )

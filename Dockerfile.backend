@@ -1,6 +1,7 @@
 FROM condaforge/miniforge3
 
 WORKDIR /backend/
+RUN git clone https://github.com/AstraBert/learning-go
 COPY ./data.py /backend/
 COPY ./api.py /backend/
 COPY ./agent.py /backend/

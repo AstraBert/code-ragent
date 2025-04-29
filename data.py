@@ -10,8 +10,8 @@ with open("/run/secrets/openai_key") as f:
     openai_api_key = f.read()
 f.close()
 
-client = QdrantClient("http://localhost:6333")
-aclient = AsyncQdrantClient("http://localhost:6333")
+client = QdrantClient("http://qdrant:6333")
+aclient = AsyncQdrantClient("http://qdrant:6333")
 llm = OpenAI(api_key=openai_api_key, model="gpt-4.1-2025-04-14")
 embed_model = HuggingFaceEmbedding(model_name="Shuu12121/CodeSearch-ModernBERT-Owl")
 Settings.llm = llm
